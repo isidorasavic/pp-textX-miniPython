@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+parser/__init__.py
+parser.egg-info/PKG-INFO
+parser.egg-info/SOURCES.txt
+parser.egg-info/dependency_links.txt
+parser.egg-info/entry_points.txt
+parser.egg-info/not-zip-safe
+parser.egg-info/requires.txt
+parser.egg-info/top_level.txt
