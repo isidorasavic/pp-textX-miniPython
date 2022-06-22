@@ -1,0 +1,31 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+2306174321456[ label="{First|}"]
+
+2306174191856[ label="{Second|second: list[STRING]\l}"]
+
+2306174233136[ label="{Third|third: list[Second]\l}"]
+
+
+
+2306174321456 -> 2306174191856[arrowtail=diamond, dir=both, headlabel="second 1..*"]
+2306174321456 -> 2306174233136[arrowtail=diamond, dir=both, headlabel="third 1..*"]
+match_rules [ shape=plaintext, label=< <table>
+	<tr>
+		<td><b>Second</b></td><td>BOOL|INT</td>
+	</tr>
+</table> >]
+
+
+}

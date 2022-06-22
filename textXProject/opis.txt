@@ -1,0 +1,11 @@
+Sintaksna analiza:
+	- while
+	- definicija funkcije
+	- poziv funkcije
+	- naziv main funkcije
+	- aritmeticke operacije
+	- if, elif i else
+	- prazne linije
+ 
+-- trebalo bi sva sintaksna analiza da je gotova
++ ostala je semanticka i interpretiranje modela

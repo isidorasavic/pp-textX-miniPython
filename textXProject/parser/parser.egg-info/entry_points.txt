@@ -1,3 +1,0 @@
-[textx_languages]
-python = parser:python_language
-

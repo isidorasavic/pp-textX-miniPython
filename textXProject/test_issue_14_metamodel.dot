@@ -1,0 +1,31 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+2306125088896[ label="{Program|}"]
+
+2306125077376[ label="{*Command|}"]
+
+2306125083136[ label="{InitialCommand|x: INT\ly: INT\l}"]
+
+
+
+2306125088896 -> 2306125077376[arrowtail=diamond, dir=both, headlabel="commands 0..*"]
+2306125077376 -> 2306125083136 [dir=back]
+match_rules [ shape=plaintext, label=< <table>
+	<tr>
+		<td><b>InteractCommand</b></td><td>sleep|NUMBER|BOOL|STRING</td>
+	</tr>
+</table> >]
+
+
+}

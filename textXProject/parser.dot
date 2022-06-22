@@ -1,0 +1,89 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+1922699503200[ label="{*Program|}"]
+
+1922699514720[ label="{*MainFunction|}"]
+
+1922699497440[ label="{FunctionDeclaration|add_params: list[ID]\l}"]
+
+1922699527200[ label="{*FunctionBody|}"]
+
+1922699516640[ label="{*ReturnStatement|}"]
+
+1922699507040[ label="{*VariableDeclaration|}"]
+
+1922699528160[ label="{*NumericalExpression|}"]
+
+1922699532000[ label="{*Expression|}"]
+
+1922699533920[ label="{Literal|value: STRING\l}"]
+
+1922699555040[ label="{ID|name: STRING\l}"]
+
+1922699546400[ label="{*FunctionCall|}"]
+
+1922699548320[ label="{*FunctionParams|}"]
+
+1922699536800[ label="{*Statement|}"]
+
+1922699540640[ label="{*IfStatement|}"]
+
+1922699542560[ label="{*ElifStatement|}"]
+
+1922699550240[ label="{*ElseStatement|}"]
+
+1922699552160[ label="{*WhileStatement|}"]
+
+1922700154016[ label="{*IncrementStatement|}"]
+
+
+
+1922699503200 -> 1922699497440 [dir=back]
+1922699503200 -> 1922699536800 [dir=back]
+1922699514720 -> 1922699527200 [dir=back]
+1922699527200 -> 1922699536800 [dir=back]
+1922699516640 -> 1922699528160 [dir=back]
+1922699507040 -> 1922699555040 [dir=back]
+1922699528160 -> 1922699532000 [dir=back]
+1922699532000 -> 1922699546400 [dir=back]
+1922699532000 -> 1922699555040 [dir=back]
+1922699532000 -> 1922699533920 [dir=back]
+1922699546400 -> 1922699555040 [dir=back]
+1922699548320 -> 1922699533920 [dir=back]
+1922699536800 -> 1922699546400 [dir=back]
+1922699536800 -> 1922699507040 [dir=back]
+1922699536800 -> 1922699540640 [dir=back]
+1922699536800 -> 1922699552160 [dir=back]
+1922699540640 -> 1922699528160 [dir=back]
+1922699542560 -> 1922699528160 [dir=back]
+1922699550240 -> 1922699536800 [dir=back]
+1922699552160 -> 1922699532000 [dir=back]
+1922700154016 -> 1922699555040 [dir=back]
+match_rules [ shape=plaintext, label=< <table>
+	<tr>
+		<td><b>AROP</b></td><td>+|-|*|/</td>
+	</tr>
+	<tr>
+		<td><b>Comment</b></td><td>\/\/.*$</td>
+	</tr>
+	<tr>
+		<td><b>INCREMENT</b></td><td>+=|-=</td>
+	</tr>
+	<tr>
+		<td><b>RELOP</b></td><td>==|&lt;=|&gt;=|!=|&lt;|&gt;</td>
+	</tr>
+</table> >]
+
+
+}

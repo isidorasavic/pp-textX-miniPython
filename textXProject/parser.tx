@@ -1,0 +1,95 @@
+/*
+	Isidora Savic miniPython parser
+*/
+
+Program: 
+	(FunctionDeclaration | Statement)*  MainFunction?
+;
+
+MainFunction:
+	"if" "__name__" "==" '"__main__"' ":" FunctionBody
+;
+
+FunctionDeclaration:
+	'def' ID '(' add_params+=ID[','] ')' ':' FunctionBody
+;
+
+FunctionBody:
+	Statement* ReturnStatement?
+;
+
+ReturnStatement:
+	'return' NumericalExpression
+;
+
+VariableDeclaration:
+	ID '=' NumericalExpression
+;
+
+NumericalExpression:
+	Expression AROP Expression | Expression
+;
+
+Expression:
+	FunctionCall | ID | Literal 
+;
+
+Literal:
+	value=/\w+/
+;
+
+ID:
+	name = /[a-zA-Z]*/
+;
+
+FunctionCall:
+	ID '(' FunctionParams ')'
+;
+
+FunctionParams:
+	Literal*[',']
+;
+
+Statement:
+	FunctionCall |
+	VariableDeclaration |
+	IfStatement |
+	WhileStatement
+;
+
+IfStatement:	
+	'if' NumericalExpression RELOP NumericalExpression ':'	Statement+ ElifStatement* ElseStatement?
+
+;
+
+ElifStatement:
+	'elif' NumericalExpression RELOP NumericalExpression ':' Statement+
+;
+
+ElseStatement:
+	'else' ':'	Statement+
+;
+
+WhileStatement:
+	'while' Expression RELOP Expression ':' Statement+
+;
+
+IncrementStatement:
+	ID INCREMENT Expression
+;
+
+INCREMENT:
+	'+=' | '-='
+;
+
+AROP:
+	'+' | '-' | '*' | '/' 
+;
+
+RELOP:
+	'==' | '<=' | '>=' | '!=' | '<' | '>' 
+;
+
+Comment:
+	/\/\/.*$/
+;

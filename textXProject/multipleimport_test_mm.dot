@@ -1,0 +1,28 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+2306174212016[ label="{First|}"]
+
+2306174198576[ label="{Third|t: STRING\l}"]
+
+2306174161136[ label="{Second|}"]
+
+2306174170736[ label="{Third|t: INT\l}"]
+
+
+
+2306174212016 -> 2306174161136[arrowtail=diamond, dir=both, headlabel="seconds 1..*"]
+2306174212016 -> 2306174198576[arrowtail=diamond, dir=both, headlabel="thirds 1..*"]
+2306174161136 -> 2306174170736[arrowtail=diamond, dir=both, headlabel="thirds 1..*"]
+
+}

@@ -1,0 +1,10 @@
+textx_lang_questionnaire-0.2.0.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+textx_lang_questionnaire-0.2.0.dist-info/LICENSE,sha256=TyV0lW97XQRuycK5kh-uwmwwiKSmAynl4TQQI575isI,1096
+textx_lang_questionnaire-0.2.0.dist-info/METADATA,sha256=XjzD8SKq5PRrhcRbibzn_sh_qAeMRCosyZ7uk5Zae44,3583
+textx_lang_questionnaire-0.2.0.dist-info/RECORD,,
+textx_lang_questionnaire-0.2.0.dist-info/WHEEL,sha256=kGT74LWyRUZrL4VgLh6_g12IeVl_9u9ZVhadrgXZUEY,110
+textx_lang_questionnaire-0.2.0.dist-info/entry_points.txt,sha256=8e2QSq--1gCpNdBSrB69z5lFc3gU_h8uKEJZc868u9Q,65
+textx_lang_questionnaire-0.2.0.dist-info/top_level.txt,sha256=gBMbRNuQXcp0V6fED4GxXa8XleZXkd-j_TvDGcv6xkU,16
+txquestionnaire/__init__.py,sha256=FxoHQA1IQ4kiln-hb8USQJRntj9GCB8SYurp5uDosJ8,3194
+txquestionnaire/__pycache__/__init__.cpython-310.pyc,,
+txquestionnaire/questionnaire.tx,sha256=moZba7qjfn2z6ValADSZG_gTIN5j_iOQS0W5m5E1ZCQ,551
