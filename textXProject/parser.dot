@@ -11,74 +11,66 @@
     edge[dir=black,arrowtail=empty]
 
 
-1922699503200[ label="{*Program|}"]
+2218763956520[ label="{Program|}"]
 
-1922699514720[ label="{*MainFunction|}"]
+2218766000696[ label="{*IfStatement|}"]
 
-1922699497440[ label="{FunctionDeclaration|add_params: list[ID]\l}"]
+2218763971624[ label="{ReturnStatement|}"]
 
-1922699527200[ label="{*FunctionBody|}"]
+2218766012968[ label="{Statement|statement: OBJECT\l}"]
 
-1922699516640[ label="{*ReturnStatement|}"]
+2218763976344[ label="{VariableDeclaration|name: ID\l}"]
 
-1922699507040[ label="{*VariableDeclaration|}"]
+2218766009192[ label="{*ElseStatement|}"]
 
-1922699528160[ label="{*NumericalExpression|}"]
+2218766016744[ label="{FunctionCall|name: ID\l}"]
 
-1922699532000[ label="{*Expression|}"]
+2218766015800[ label="{*ElifStatement|}"]
 
-1922699533920[ label="{Literal|value: STRING\l}"]
+2218763967848[ label="{FunctionBody|statements: list[OBJECT]\l}"]
 
-1922699555040[ label="{ID|name: STRING\l}"]
+2218766007304[ label="{Expression|name: OBJECT\l}"]
 
-1922699546400[ label="{*FunctionCall|}"]
+2218763958408[ label="{*Command|}"]
 
-1922699548320[ label="{*FunctionParams|}"]
+2218765997864[ label="{NumericalExpression|}"]
 
-1922699536800[ label="{*Statement|}"]
+2218763966904[ label="{FunctionDeclaration|name: ID\ladd_params: list[ID]\l}"]
 
-1922699540640[ label="{*IfStatement|}"]
+2218765992200[ label="{*WhileStatement|}"]
 
-1922699542560[ label="{*ElifStatement|}"]
-
-1922699550240[ label="{*ElseStatement|}"]
-
-1922699552160[ label="{*WhileStatement|}"]
-
-1922700154016[ label="{*IncrementStatement|}"]
+2218766024296[ label="{IncrementStatement|name: ID\l}"]
 
 
 
-1922699503200 -> 1922699497440 [dir=back]
-1922699503200 -> 1922699536800 [dir=back]
-1922699514720 -> 1922699527200 [dir=back]
-1922699527200 -> 1922699536800 [dir=back]
-1922699516640 -> 1922699528160 [dir=back]
-1922699507040 -> 1922699555040 [dir=back]
-1922699528160 -> 1922699532000 [dir=back]
-1922699532000 -> 1922699546400 [dir=back]
-1922699532000 -> 1922699555040 [dir=back]
-1922699532000 -> 1922699533920 [dir=back]
-1922699546400 -> 1922699555040 [dir=back]
-1922699548320 -> 1922699533920 [dir=back]
-1922699536800 -> 1922699546400 [dir=back]
-1922699536800 -> 1922699507040 [dir=back]
-1922699536800 -> 1922699540640 [dir=back]
-1922699536800 -> 1922699552160 [dir=back]
-1922699540640 -> 1922699528160 [dir=back]
-1922699542560 -> 1922699528160 [dir=back]
-1922699550240 -> 1922699536800 [dir=back]
-1922699552160 -> 1922699532000 [dir=back]
-1922700154016 -> 1922699555040 [dir=back]
+2218763956520 -> 2218763958408[arrowtail=diamond, dir=both, headlabel="definitions 0..*"]
+2218766000696 -> 2218765997864 [dir=back]
+2218763971624 -> 2218765997864[arrowtail=diamond, dir=both, headlabel="exp "]
+2218763961240[ label="{*OBJECT|}"]
+
+2218763976344 -> 2218765997864[arrowtail=diamond, dir=both, headlabel="declaration "]
+2218766009192 -> 2218766012968 [dir=back]
+2218766016744 -> 2218766007304[arrowtail=diamond, dir=both, headlabel="params 0..*"]
+2218766015800 -> 2218765997864 [dir=back]
+2218763961240[ label="{*OBJECT|}"]
+
+2218763961240[ label="{*OBJECT|}"]
+
+2218763958408 -> 2218763966904 [dir=back]
+2218763958408 -> 2218766012968 [dir=back]
+2218765997864 -> 2218766007304[arrowtail=diamond, dir=both, headlabel="exp1 "]
+2218765997864 -> 2218766007304[arrowtail=diamond, dir=both, headlabel="exp2 "]
+2218763966904 -> 2218763967848[arrowtail=diamond, dir=both, headlabel="body "]
+2218765992200 -> 2218766007304 [dir=back]
 match_rules [ shape=plaintext, label=< <table>
 	<tr>
 		<td><b>AROP</b></td><td>+|-|*|/</td>
 	</tr>
 	<tr>
-		<td><b>Comment</b></td><td>\/\/.*$</td>
+		<td><b>INCREMENT</b></td><td>+=|-=</td>
 	</tr>
 	<tr>
-		<td><b>INCREMENT</b></td><td>+=|-=</td>
+		<td><b>Literal</b></td><td>\w+|&quot; \w+ &quot;</td>
 	</tr>
 	<tr>
 		<td><b>RELOP</b></td><td>==|&lt;=|&gt;=|!=|&lt;|&gt;</td>

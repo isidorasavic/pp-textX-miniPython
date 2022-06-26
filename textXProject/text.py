@@ -1,21 +1,11 @@
-const=3
-def func () :
-	a=3
-	c=p(2) + 4
-	d = a
-	f = p(2,3,4)
-	
-	if a == b :
-		s=d
-	elif a <= b:
-		s=3
-	elif a >= b: 
-		s=3
-	else:
-		s=7
-	while s < 9:
-		s= s + 1
+b = 1+2
+def f(s):
+	t = 3
+	return d;
 
-if __name__ == "__main__" :
-	d=4
-	func(1, 2, d)
+def c():
+	a = e + 4
+	return 8;
+
+def main():
+	e = 0;

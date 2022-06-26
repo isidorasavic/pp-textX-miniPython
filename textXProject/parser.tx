@@ -3,58 +3,57 @@
 */
 
 Program: 
-	(FunctionDeclaration | Statement)*  MainFunction?
+	definitions*=Command 
 ;
 
-MainFunction:
-	"if" "__name__" "==" '"__main__"' ":" FunctionBody
+Command :
+	FunctionDeclaration| Statement
 ;
 
 FunctionDeclaration:
-	'def' ID '(' add_params+=ID[','] ')' ':' FunctionBody
+	'def' name=ID '(' add_params+=ID[','] ')' ':' body=FunctionBody
 ;
 
+
 FunctionBody:
-	Statement* ReturnStatement?
+	statements*=Statement statements+=ReturnStatement? ";"
 ;
 
 ReturnStatement:
-	'return' NumericalExpression
+	'return' exp=NumericalExpression
 ;
 
 VariableDeclaration:
-	ID '=' NumericalExpression
+	name=ID '=' declaration=NumericalExpression
 ;
 
 NumericalExpression:
-	Expression AROP Expression | Expression
+	exp1=Expression AROP exp2=Expression | exp1=Expression
 ;
 
 Expression:
-	FunctionCall | ID | Literal 
+	name=FunctionCall | name=ID | name=Literal 
 ;
 
 Literal:
-	value=/\w+/
+	/\w+/ | '"'/\w+/'"' 
 ;
 
 ID:
-	name = /[a-zA-Z]*/
+	/[a-zA-Z]*/
 ;
 
 FunctionCall:
-	ID '(' FunctionParams ')'
+	name=ID '(' params*=Expression[','] ')'
 ;
 
-FunctionParams:
-	Literal*[',']
-;
 
 Statement:
-	FunctionCall |
-	VariableDeclaration |
-	IfStatement |
-	WhileStatement
+	statement=FunctionCall |
+	statement=VariableDeclaration |
+	statement=IfStatement |
+	statement=WhileStatement|
+	statement=IncrementStatement
 ;
 
 IfStatement:	
@@ -75,7 +74,7 @@ WhileStatement:
 ;
 
 IncrementStatement:
-	ID INCREMENT Expression
+	name=ID INCREMENT Expression
 ;
 
 INCREMENT:
@@ -88,8 +87,4 @@ AROP:
 
 RELOP:
 	'==' | '<=' | '>=' | '!=' | '<' | '>' 
-;
-
-Comment:
-	/\/\/.*$/
 ;
