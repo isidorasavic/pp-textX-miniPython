@@ -36,7 +36,7 @@ Expression:
 ;
 
 Literal:
-	/\w+/ | '"'/\w+/'"' 
+	/\w+/
 ;
 
 ID:
@@ -57,20 +57,20 @@ Statement:
 ;
 
 IfStatement:	
-	'if' NumericalExpression RELOP NumericalExpression ':'	Statement+ ElifStatement* ElseStatement?
+	'if' exp1=NumericalExpression RELOP exp2=NumericalExpression ':'	statements+=Statement ElifStatement* ElseStatement?
 
 ;
 
 ElifStatement:
-	'elif' NumericalExpression RELOP NumericalExpression ':' Statement+
+	'elif' exp1=NumericalExpression RELOP exp2=NumericalExpression ':' statement+=Statement
 ;
 
 ElseStatement:
-	'else' ':'	Statement+
+	'else' ':'	statements+=Statement
 ;
 
 WhileStatement:
-	'while' Expression RELOP Expression ':' Statement+
+	'while' exp1=NumericalExpression RELOP exp1=NumericalExpression ':' statements+=Statement
 ;
 
 IncrementStatement:

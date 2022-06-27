@@ -1,4 +1,5 @@
 from textx import metamodel_from_file
+import sys
 
 from colorama import init, Fore, Back, Style
 
@@ -29,7 +30,6 @@ class SymbolsTable(object):
 	def add_element(self, name, type, param_num):
 		el = TS_Element(name, type, param_num)
 		self.elements.append(el)
-		# print(Fore.RED + "CHEESY")
 		print(Fore.GREEN + "Added {type} {name} to table of symbols".format(type=type, name=name));
 
 	def name_exists(self, name, type):
@@ -48,7 +48,7 @@ class SymbolsTable(object):
 		for i in range(len(self.elements)):
 			if (self.elements[i].name == name):
 				return self.elements[i].param_num
-		return null
+		return None
 
 
 table_of_symbols = SymbolsTable()
@@ -86,7 +86,7 @@ class Increment(object):
 
 	def inspect(self):
 		if table_of_symbols.name_exists(self.name, "variable") == False:
-			print(Fore.RED + "ERROR: Variable {name} is not declared!".format(name=self.name));
+			print(Fore.RED + "ERROR: Variable in increment {name} is not declared!".format(name=self.name));
 
 class Expression(object):
 	name=""
@@ -100,10 +100,14 @@ class Expression(object):
 		elif isinstance(self.name, str) == False :
 			if is_number(self.name.name):
 				pass
-			elif table_of_symbols.name_exists(self.name.name, "function") == False:
+			elif isinstance(self.name.name, str) == False:
+				if table_of_symbols.name_exists(self.name.name.name, "function") == False and table_of_symbols.name_exists(self.name.name.name, "variable") == False:
+					print(Fore.RED + "ERROR: {name} not declared!".format(name=self.name.name.name))
+			elif table_of_symbols.name_exists(self.name.name, "function") == False and table_of_symbols.name_exists(self.name.name, "variable") == False:
 				print(Fore.RED + "ERROR: {name} not declared!".format(name=self.name.name))
-		elif table_of_symbols.name_exists(self.name, "variable") == False :
-			print(Fore.RED + "ERROR: Expression {name} is not defined!!".format(name=self.name))
+		elif isinstance(self.name, str) == True :
+			if table_of_symbols.name_exists(self.name, "function") == False and table_of_symbols.name_exists(self.name, "variable") == False:
+				print(Fore.RED + "ERROR: {name} not declared!".format(name=self.name))
 
 class FunctionCall(object):
 	name=''
@@ -144,17 +148,23 @@ class FunctionDeclaration(object):
 		else:
 			table_of_symbols.add_element(self.name, "function", len(self.args))
 
-		self.body.inspect()
+		for arg in self.args:
+			if table_of_symbols.name_exists(arg, "variable"):
+				print(Fore.YELLOW + "INFO: Varable {var} is already declared!".format(var=arg));
+			else:
+				table_of_symbols.add_element(arg, "variable", 0)
+
+		# self.body.inspect()
 
 
 # funkcije za proveru semantike
 
-def return_processor(return_statement):
-	ex = Expression(return_statement.exp.exp1)
-	ex.inspect()
+def numerical_expression_processor(exp):
+	ex1 = Expression(exp.exp1)
+	ex1.inspect()
 
-	if(return_statement.exp.exp2 != None):
-		ex2 = Expression(return_statement.exp.exp2)
+	if(exp.exp2 != None):
+		ex2 = Expression(exp.exp2)
 		ex2.inspect()
 
 def expression_processor(expression):
@@ -183,8 +193,8 @@ my_metamodel.register_obj_processors({'FunctionDeclaration': function_declaratio
 									'VariableDeclaration': variable_declaration_processor,
 									'IncrementStatement': increment_processor,
 									'Expression': expression_processor,
-									'ReturnStatement': return_processor,
+									"NumericalExpression" : numerical_expression_processor,
 									'FunctionCall': function_call_processor})
 
 
-my_model = my_metamodel.model_from_file('text.py')
+my_model = my_metamodel.model_from_file(sys.argv[1])

@@ -11,57 +11,62 @@
     edge[dir=black,arrowtail=empty]
 
 
-2218763956520[ label="{Program|}"]
+3095938727416[ label="{ReturnStatement|}"]
 
-2218766000696[ label="{*IfStatement|}"]
+3095936872248[ label="{*Command|}"]
 
-2218763971624[ label="{ReturnStatement|}"]
+3095938721752[ label="{Statement|statement: OBJECT\l}"]
 
-2218766012968[ label="{Statement|statement: OBJECT\l}"]
+3095938740632[ label="{FunctionCall|name: ID\l}"]
 
-2218763976344[ label="{VariableDeclaration|name: ID\l}"]
+3095938713256[ label="{VariableDeclaration|name: ID\l}"]
 
-2218766009192[ label="{*ElseStatement|}"]
+3095938741576[ label="{ElseStatement|}"]
 
-2218766016744[ label="{FunctionCall|name: ID\l}"]
+3095938733080[ label="{Expression|name: OBJECT\l}"]
 
-2218766015800[ label="{*ElifStatement|}"]
+3095938711368[ label="{WhileStatement|}"]
 
-2218763967848[ label="{FunctionBody|statements: list[OBJECT]\l}"]
+3095938717032[ label="{IfStatement|}"]
 
-2218766007304[ label="{Expression|name: OBJECT\l}"]
+3095938715144[ label="{FunctionDeclaration|name: ID\ladd_params: list[ID]\l}"]
 
-2218763958408[ label="{*Command|}"]
+3095936882632[ label="{Program|}"]
 
-2218765997864[ label="{NumericalExpression|}"]
+3095938745352[ label="{IncrementStatement|name: ID\l}"]
 
-2218763966904[ label="{FunctionDeclaration|name: ID\ladd_params: list[ID]\l}"]
+3095938724584[ label="{ElifStatement|}"]
 
-2218765992200[ label="{*WhileStatement|}"]
+3095938738744[ label="{FunctionBody|statements: list[OBJECT]\l}"]
 
-2218766024296[ label="{IncrementStatement|name: ID\l}"]
+3095938716088[ label="{NumericalExpression|}"]
 
 
 
-2218763956520 -> 2218763958408[arrowtail=diamond, dir=both, headlabel="definitions 0..*"]
-2218766000696 -> 2218765997864 [dir=back]
-2218763971624 -> 2218765997864[arrowtail=diamond, dir=both, headlabel="exp "]
-2218763961240[ label="{*OBJECT|}"]
+3095938727416 -> 3095938716088[arrowtail=diamond, dir=both, headlabel="exp "]
+3095936872248 -> 3095938715144 [dir=back]
+3095936872248 -> 3095938721752 [dir=back]
+3095936874136[ label="{*OBJECT|}"]
 
-2218763976344 -> 2218765997864[arrowtail=diamond, dir=both, headlabel="declaration "]
-2218766009192 -> 2218766012968 [dir=back]
-2218766016744 -> 2218766007304[arrowtail=diamond, dir=both, headlabel="params 0..*"]
-2218766015800 -> 2218765997864 [dir=back]
-2218763961240[ label="{*OBJECT|}"]
+3095938740632 -> 3095938733080[arrowtail=diamond, dir=both, headlabel="params 0..*"]
+3095938713256 -> 3095938716088[arrowtail=diamond, dir=both, headlabel="declaration "]
+3095938741576 -> 3095938721752[arrowtail=diamond, dir=both, headlabel="statements 1..*"]
+3095936874136[ label="{*OBJECT|}"]
 
-2218763961240[ label="{*OBJECT|}"]
+3095938711368 -> 3095938716088[arrowtail=diamond, dir=both, headlabel="exp1 1..*"]
+3095938711368 -> 3095938721752[arrowtail=diamond, dir=both, headlabel="statements 1..*"]
+3095938717032 -> 3095938716088[arrowtail=diamond, dir=both, headlabel="exp1 "]
+3095938717032 -> 3095938716088[arrowtail=diamond, dir=both, headlabel="exp2 "]
+3095938717032 -> 3095938721752[arrowtail=diamond, dir=both, headlabel="statements 1..*"]
+3095938715144 -> 3095938738744[arrowtail=diamond, dir=both, headlabel="body "]
+3095936882632 -> 3095936872248[arrowtail=diamond, dir=both, headlabel="definitions 0..*"]
+3095938724584 -> 3095938716088[arrowtail=diamond, dir=both, headlabel="exp1 "]
+3095938724584 -> 3095938716088[arrowtail=diamond, dir=both, headlabel="exp2 "]
+3095938724584 -> 3095938721752[arrowtail=diamond, dir=both, headlabel="statement 1..*"]
+3095936874136[ label="{*OBJECT|}"]
 
-2218763958408 -> 2218763966904 [dir=back]
-2218763958408 -> 2218766012968 [dir=back]
-2218765997864 -> 2218766007304[arrowtail=diamond, dir=both, headlabel="exp1 "]
-2218765997864 -> 2218766007304[arrowtail=diamond, dir=both, headlabel="exp2 "]
-2218763966904 -> 2218763967848[arrowtail=diamond, dir=both, headlabel="body "]
-2218765992200 -> 2218766007304 [dir=back]
+3095938716088 -> 3095938733080[arrowtail=diamond, dir=both, headlabel="exp1 "]
+3095938716088 -> 3095938733080[arrowtail=diamond, dir=both, headlabel="exp2 "]
 match_rules [ shape=plaintext, label=< <table>
 	<tr>
 		<td><b>AROP</b></td><td>+|-|*|/</td>
