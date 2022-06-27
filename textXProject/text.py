@@ -1,4 +1,5 @@
 b = 1+2
+b = 4
 def f(s):
 	t = 3
 	return d;

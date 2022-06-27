@@ -1,6 +1,12 @@
 from textx import metamodel_from_file
 
+from colorama import init, Fore, Back, Style
+
+# Initializes Colorama
+init(autoreset=True)
+
 # tabela simbola
+
 
 class TS_Element(object):
 	name=""
@@ -23,7 +29,8 @@ class SymbolsTable(object):
 	def add_element(self, name, type, param_num):
 		el = TS_Element(name, type, param_num)
 		self.elements.append(el)
-		print("Added {type} {name} to table of symbols".format(type=type, name=name));
+		# print(Fore.RED + "CHEESY")
+		print(Fore.GREEN + "Added {type} {name} to table of symbols".format(type=type, name=name));
 
 	def name_exists(self, name, type):
 		for el in self.elements:
@@ -67,7 +74,7 @@ class VariableDeclaration(object):
 
 	def inspect(self):
 		if table_of_symbols.name_exists(self.name, "variable"):
-			print("INFO: Varable {var} is already declared!".format(var=self.name));
+			print(Fore.YELLOW + "INFO: Varable {var} is already declared!".format(var=self.name));
 		else:
 			table_of_symbols.add_element(self.name, "variable", 0)
 
@@ -79,7 +86,7 @@ class Increment(object):
 
 	def inspect(self):
 		if table_of_symbols.name_exists(self.name, "variable") == False:
-			print("ERROR: Variable {name} is not declared!".format(name=self.name));
+			print(Fore.RED + "ERROR: Variable {name} is not declared!".format(name=self.name));
 
 class Expression(object):
 	name=""
@@ -94,9 +101,9 @@ class Expression(object):
 			if is_number(self.name.name):
 				pass
 			elif table_of_symbols.name_exists(self.name.name, "function") == False:
-				print("ERROR: {name} not declared!".format(name=self.name.name))
+				print(Fore.RED + "ERROR: {name} not declared!".format(name=self.name.name))
 		elif table_of_symbols.name_exists(self.name, "variable") == False :
-			print("ERROR: Expression {name} is not defined!!".format(name=self.name))
+			print(Fore.RED + "ERROR: Expression {name} is not defined!!".format(name=self.name))
 
 class FunctionCall(object):
 	name=''
@@ -108,9 +115,9 @@ class FunctionCall(object):
 
 	def inspect(self):
 		if table_of_symbols.name_exists(self.name, "function") == False:
-			print("ERROR: Function {name} does not exits!".format(name=self.name))
+			print(Fore.RED + "ERROR: Function {name} does not exits!".format(name=self.name))
 		if table_of_symbols.get_param_num(self.name) != len(self.args):
-			print("ERROR: Invalid param number!")
+			print(Fore.RED + "ERROR: Invalid param number!")
 
 class FunctionBody(object):
 	statements=""
@@ -133,7 +140,7 @@ class FunctionDeclaration(object):
 
 	def inspect(self):
 		if table_of_symbols.name_exists(self.name, "function"):
-			print("ERROR: Function already declared!");
+			print(Fore.RED + "ERROR: Function already declared!");
 		else:
 			table_of_symbols.add_element(self.name, "function", len(self.args))
 
